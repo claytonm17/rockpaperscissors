@@ -1,24 +1,25 @@
 import random
-actions = ('Rock', 'Paper', 'Scissors')
+actions = ('rock', 'paper', 'scissors')
 comp = random.choice(actions)
-print(comp)
 action = input('Enter Rock, Paper, or Scissors: ')
+action = action.lower()
+
 if action == comp:
     print("It's a tie!")
 
-elif action == 'Rock' and comp == 'Paper':
+elif action == 'rock' and comp == 'paper':
     print('You Lose!')
-elif action == 'Rock' and comp == 'Scissors':
+elif action == 'rock' and comp == 'scissors':
     print('You win!')
 
-elif action == 'Paper' and comp == 'Rock':
+elif action == 'paper' and comp == 'rock':
     print('You Win!')
-elif action == 'Paper' and comp == 'Scissors':
+elif action == 'paper' and comp == 'scissors':
     print('You Lose!')
 
-elif action == 'Scissors' and comp == 'Paper':
+elif action == 'scissors' and comp == 'paper':
     print('You Win!')
-elif action == 'Scissors' and comp == 'Rock':
+elif action == 'scissors' and comp == 'rock':
     print('You Lose!')
 
 else:
