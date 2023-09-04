@@ -1,0 +1,121 @@
+import random
+import tkinter as tk
+from tkinter import *
+
+#GUI and input
+window = tk.Tk()
+
+global player
+global comp
+#Computer vs player
+def computer():
+    global comp
+    actions = ('rock', 'paper', 'scissors')
+    comp = random.choice(actions)
+    print("computer chose", comp)
+
+def rock():
+    global player
+    player = 'rock'
+    print('player chose rock')
+    game()
+
+def paper():
+    global player
+    player = 'paper'
+    print('player chose paper')
+    game()
+
+def scissors():
+    global player
+    player = 'scissors'
+    print('player chose scissors')
+    game()
+
+def game():
+    #Computer choice
+    computer()
+
+    #Logic
+    if comp == player:
+        print('tie')
+        output.selection_clear
+        output.insert(END, "It's a tie!\n")
+
+    if comp == 'rock':
+        if player == 'scissors':
+            print('lose')
+            output.selection_clear
+            output.insert(END, "Rock smashes scissors! You lose!\n")
+        if player == 'paper':
+            print('win')
+            output.selection_clear
+            output.insert(END, "Paper covers rock! You win!\n")
+
+    if comp == 'paper':
+        if player == 'rock':
+            print('lose')
+            output.selection_clear
+            output.insert(END, "Paper covers rock! You lose!\n")
+        if player == 'scissors':
+            print('win')
+            output.selection_clear
+            output.insert(END, "Scissors cuts paper! You win!\n")
+
+    if comp == 'scissors':
+        if player == 'paper':
+            print('lose')
+            output.selection_clear
+            output.insert(END, "Scissors cuts paper! You lose!\n")
+        if player == 'rock':
+            print('win')
+            output.selection_clear
+            output.insert(END, "Rock smashes scissors! You win!\n")
+
+title = tk.Label(
+    text = "Game of Rock, Paper, Scissors",
+    fg = "white",
+    width = 24,
+    height = 2,
+    )
+
+rock = tk.Button(
+    text = "Rock",
+    width = 8,
+    height = 2,
+    bg = "gray",
+    fg = "black",
+    command = rock,
+)
+
+paper = tk.Button(
+    text = "Paper",
+    width = 8,
+    height = 2,
+    bg = "gray",
+    fg = "black",
+    command = paper,
+)
+
+scissors = tk.Button(
+    text = "Scissors",
+    width = 8,
+    height = 2,
+    bg = "gray",
+    fg = "black",
+    command = scissors,
+)
+
+output = tk.Text(
+    width = 45,
+    height = 2,
+)
+
+#GUI display
+title.grid(row = 0, columnspan = 3)
+rock.grid(row = 1, column = 0)
+paper.grid(row = 1, column = 1)
+scissors.grid(row = 1, column = 2)
+output.grid(row=2, columnspan = 3)
+
+window.mainloop()
